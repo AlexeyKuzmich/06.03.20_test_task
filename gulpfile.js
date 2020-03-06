@@ -17,27 +17,25 @@ const {series, parallel}	= require('gulp'),
 function styles() {
 	return gulp
 		.src('app/scss/**/*.scss')
-		.pipe(sass())
+		.pipe(sass({outputStyle: 'expanded'}))
 		.pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
 		.pipe(gulp.dest('app/css'))
 		.pipe(browserSync.stream());
 }
 
-// минимизация и добавления суффикса 'min' файлу стилей сторонних библиотек (libs.css становится libsьшт.css)
-function csslibs() {
+function cssmin() {
 	return gulp
-		.src('app/css/libs.css')
+		.src('app/css/main.css')
 		.pipe(cssnano())
 		.pipe(rename({suffix: '.min'}))
 		.pipe(gulp.dest('app/css'));
 }
 
-// конкатинация и сжимание файлов js подключаемых библиотек
 function scripts() {
 	return gulp
 		.src([
-			'app/libs/jquery/dist/jquery.min.js',
-			'app/libs/owl.carousel/dist/owl.carousel.min.js'
+			'app/libs/jquery-3.4.1/jquery-3.4.1.js',
+			'app/libs/slick-slider/slick.min.js'
 		])
 		.pipe(concat('libs.min.js'))
 		.pipe(uglify())
@@ -64,7 +62,7 @@ function watch() {
 		},
 		notify: false
 	});
-	gulp.watch('app/sass/**/*.sass', styles);
+	gulp.watch('app/scss/**/*.scss', styles);
 	gulp.watch('app/*.html').on('change', browserSync.reload);
 	gulp.watch('app/js/**/*.js').on('change', browserSync.reload);
 }
@@ -84,10 +82,7 @@ function cleanCache(done) {
 //сборка без очистки
 function build(done) {
 
-	const buildCss = gulp.src([
-			'app/css/libs.min.css',
-			'app/css/main.css'
-		])
+	const buildCss = gulp.src('app/css/main.min.css')
 		.pipe(gulp.dest('dist/css'));
 
 	const buildFonts = gulp.src('app/fonts/**/*')
@@ -103,7 +98,7 @@ function build(done) {
 }
 
 exports.styles						= styles;
-exports.csslibs						= csslibs;
+exports.cssmin						= cssmin;
 exports.cssnano						= cssnano;
 exports.rename						= rename;
 exports.concat						= concat;
@@ -117,4 +112,4 @@ exports.cleanCache				= cleanCache;// запускать вручную, при 
 exports.build							= build;
 
 // очистка + окончательная сборак
-exports.finalBuild				= series(clean, styles, csslibs, scripts, img, build);
+exports.finalBuild				= series(clean, styles, cssmin, scripts, img, build);
