@@ -1,25 +1,13 @@
-@font-face
-	font-family: Roboto-Light
-	src: url('../fonts/Roboto-Light.eot')
-	src: url('../fonts/Roboto-Light.ttf') format('truetype'), url('../fonts/Roboto-Light.woff') format('woff')
-
-@font-face
-	font-family: Roboto-Regular
-	src: url('../fonts/Roboto-Regular.eot')
-	src: url('../fonts/Roboto-Regular.ttf') format('truetype'), url('../fonts/Roboto-Regular.woff') format('woff')
-
-@font-face
-	font-family: Roboto-Thin
-	src: url('../fonts/Roboto-Thin.eot')
-	src: url('../fonts/Roboto-Thin.ttf') format('truetype'), url('../fonts/Roboto-Thin.woff') format('woff')
-
-@font-face
-	font-family: BebasNeueBook
-	src: url('../fonts/BebasNeueBook.eot')
-	src: url('../fonts/BebasNeueBook.ttf') format('truetype'), url('../fonts/BebasNeueBook.woff') format('woff')
-
-@font-face
-	font-family: BebasNeueRegular
-	src: url('../fonts/BebasNeueRegular.eot')
-	src: url('../fonts/BebasNeueRegular.ttf') format('truetype'), url('../fonts/BebasNeueRegular.woff') format('woff')
-
+/* roboto-regular - cyrillic_latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/roboto-v20-cyrillic_latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Roboto'), local('Roboto-Regular'),
+       url('../fonts/roboto-v20-cyrillic_latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/roboto-v20-cyrillic_latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/roboto-v20-cyrillic_latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/roboto-v20-cyrillic_latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/roboto-v20-cyrillic_latin-regular.svg#Roboto') format('svg'); /* Legacy iOS */
+}

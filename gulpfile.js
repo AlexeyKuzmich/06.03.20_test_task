@@ -42,7 +42,6 @@ function scripts() {
 		.pipe(gulp.dest('app/js/'));
 }
 
-// сжатие картинок
 function img() {
 	return gulp.src('app/img/**/*')
 		.pipe(imagemin({
@@ -54,7 +53,6 @@ function img() {
 		.pipe(gulp.dest('dist/img'));
 }
 
-// слежение за изменениями файлов при разработке
 function watch() {
 	browserSync.init({
 		server: {
@@ -67,19 +65,16 @@ function watch() {
 	gulp.watch('app/js/**/*.js').on('change', browserSync.reload);
 }
 
-// удаление (очистка) директории 'dist' перед сборкой
 function clean(done) {
 	return del('dist');
 		done();
 }
 
-// очистка кеша изображений
 function cleanCache(done) {
 	return cache.clearAll();
 		done();
 }
 
-//сборка без очистки
 function build(done) {
 
 	const buildCss = gulp.src('app/css/main.min.css')

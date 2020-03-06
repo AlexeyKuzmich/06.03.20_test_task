@@ -1,7 +1,10 @@
+/* css libraries*/
 @import '../libs/slick-slider/slick';
 
-/* common styles*/
+/* fonts*/
+@import '_fonts.scss';
 
+/* common styles*/
 html{
   box-sizing: border-box;
   padding: 0;
@@ -24,5 +27,6 @@ html{
 }
 
 .text{
+  font-family: 'Roboto';
   text-align: center;
 }
